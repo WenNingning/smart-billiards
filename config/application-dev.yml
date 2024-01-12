@@ -1,0 +1,59 @@
+spring:
+  profiles:
+    active: dev #指定为开发环境
+
+#数据库配置
+  datasource:
+    druid:
+      web-stat-filter:
+        enabled: false
+      system:
+        url: jdbc:mysql://localhost:3306/smart_billiards?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+        username: root
+        password: qwe123
+        driver-class-name: com.mysql.jdbc.Driver
+      test:
+        url: jdbc:mysql://localhost:3306/smart_billiards?useUnicode=true&characterEncoding=utf8&autoReconnect=true&useSSL=false
+        username: root
+        password: qwe123
+        driver-class-name: com.mysql.jdbc.Driver
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+#rabbitmq
+  rabbitmq:
+    host: 192.168.1.188
+    port: 5675
+    username: guest
+    password: guest
+    virtual-host: /
+
+#redis 配置
+redis:
+  type: standalone
+  config :
+    type: manual
+  host: 192.168.1.188
+  port: 6375
+  password:
+  maxIdle: 500
+  maxTotal: 500
+  maxWaitMillis: -1
+
+
+# 开发环境日志为debug      
+logging:
+  level:
+    org.springframework: ERROR
+    com.ning : DEBUG
+
+#java 系统配置
+ning:
+  product: stand #定义系统标准产品，微服务指定为： microservice
+  license[0]: abcde #license请向售后人员索要
+  timeout:
+    accessTokenTimeout:  86400 #访问token失效时间 单位秒
+    refreshTokenTimeout: 186400 #刷新token失效时间 单位秒
+    captchaTimout:  120       #验证码失效时间 单位秒
+    smscodeTimout: 120        #短信验证码失效时间 单位秒
+  ssl: off #是否开启ssl

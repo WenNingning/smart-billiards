@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: nc.api.device
+  cloud:
+    config:
+      uri: http://localhost:8888
+      profile: dev
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+
+server:
+  port: 8006
